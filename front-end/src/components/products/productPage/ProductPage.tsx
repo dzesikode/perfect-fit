@@ -220,7 +220,7 @@ const ProductPage = (props: Props) => {
             </Grid>
           </Paper>
         </Grid>
-        {products.length && (
+        {Boolean(products.length) && (
           <Grid item container xs={9} spacing={2}>
             {products.map((product) => (
               <Grid item xs={3} key={product.id}>
