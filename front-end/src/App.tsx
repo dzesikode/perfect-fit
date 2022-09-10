@@ -5,6 +5,7 @@ import { BrandsProvider } from "./contexts/BrandsContext";
 import { Department } from "./types/category";
 import Home from "./components/home/Home";
 import Layout from "./components/Layout";
+import Login from "./components/auth/Login";
 import ProductPage from "./components/products/productPage/ProductPage";
 import { categories } from "./categories";
 
@@ -42,6 +43,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
+              <Route path="login" element={<Login />} />
               {routes.map((route) => {
                 const routeWithoutSlash = route.to.substring(1);
                 return (

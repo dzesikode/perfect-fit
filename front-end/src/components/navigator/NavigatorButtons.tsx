@@ -6,9 +6,13 @@ import {
 import { Grid, IconButton, Menu, MenuItem } from "@mui/material";
 import { MouseEvent, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
 const NavigatorButtons = () => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
+
+  const navigate = useNavigate();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -16,6 +20,11 @@ const NavigatorButtons = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    handleClose();
   };
 
   return (
@@ -36,7 +45,7 @@ const NavigatorButtons = () => {
         </IconButton>
       </Grid>
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={() => handleNavigate("/login")}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
