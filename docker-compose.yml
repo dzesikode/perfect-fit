@@ -8,9 +8,11 @@ services:
       - ./back-end/:/usr/src/app/
     ports:
       - 1337:8000
+    env_file:
+      - ./back-end/.env
     environment:
       - DEBUG=1
-      - SECRET_KEY=django-insecure-u=8$$+tw_myv83uv(&6+5vlnmf8^z^+%tpi_zb02@n$$#2x#b*dj
+      - SECRET_KEY=${SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
     depends_on:
       - redis
@@ -23,7 +25,7 @@ services:
       - ./back-end/:/usr/src/app/
     environment:
       - DEBUG=1
-      - SECRET_KEY=django-insecure-u=8$$+tw_myv83uv(&6+5vlnmf8^z^+%tpi_zb02@n$$#2x#b*dj
+      - SECRET_KEY=${SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
     depends_on:
       - redis
@@ -34,7 +36,7 @@ services:
       - ./back-end/:/usr/src/app/
     environment:
       - DEBUG=1
-      - SECRET_KEY=dbaa1_i7%*3r9-=z-+_mz4r-!qeed@(-a_r(g@k8jo8y3r27%m
+      - SECRET_KEY=${SECRET_KEY}
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
     depends_on:
       - redis
