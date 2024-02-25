@@ -57,7 +57,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "year",
             "department",
             "active",
-            "in_stock"
+            "in_stock",
         ]
 
     def create(self, validated_data):
@@ -79,7 +79,17 @@ class ProductSerializer(serializers.ModelSerializer):
         else:
             product = update_instance(
                 instance,
-                ["name", "brand", "price", "description", "category", "season", "year", "department", "active"],
+                [
+                    "name",
+                    "brand",
+                    "price",
+                    "description",
+                    "category",
+                    "season",
+                    "year",
+                    "department",
+                    "active",
+                ],
                 validated_data,
             )
             product.save()

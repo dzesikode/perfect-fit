@@ -1,20 +1,31 @@
 from accounts.models import User, Address
-from accounts.serializers import UserSerializer, AddressSerializer, CurrentUserSerializer
+from accounts.serializers import (
+    UserSerializer,
+    AddressSerializer,
+    CurrentUserSerializer,
+)
 from django.contrib.auth import login
 from store.permissions import IsOwnerOrAdmin
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework.generics import ListCreateAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView
+from rest_framework.generics import (
+    ListCreateAPIView,
+    CreateAPIView,
+    RetrieveUpdateDestroyAPIView,
+    RetrieveAPIView,
+)
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from knox.views import LoginView as KnoxLoginView
 
 
 class LoginView(KnoxLoginView):
-    permission_classes = [AllowAny,]
+    permission_classes = [
+        AllowAny,
+    ]
 
     def post(self, request, format=None):
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
+        user = serializer.validated_data["user"]
         login(request, user)
         return super(LoginView, self).post(request, format=None)
 
@@ -44,6 +55,7 @@ class CurrentUserView(RetrieveAPIView):
     """
     View that returns the current user.
     """
+
     permission_classes = [IsAuthenticated]
     serializer_class = CurrentUserSerializer
 

@@ -1,9 +1,10 @@
 import re
 import copy
-from store.models import ShippingMethodEnum
+from store.models import Product, ShippingMethodEnum, Variant
 
 
-def create_sku(product, variant):
+def create_sku(product: Product, variant: Variant) -> str:
+    """Given a product and variant, create an SKU code."""
     short_product_name = re.sub(r"[aeiou\s]", "", product.name)[0:3]
     short_brand = product.brand.abbreviation
     short_year = str(product.year)[2:]

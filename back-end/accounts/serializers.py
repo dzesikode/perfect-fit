@@ -46,7 +46,7 @@ class UserSerializer(serializers.ModelSerializer):
             "is_on_mailing_list",
             "given_name",
             "family_name",
-            'is_staff'
+            "is_staff",
         ]
 
     def create(self, validated_data):
@@ -65,4 +65,4 @@ class CurrentUserSerializer(UserSerializer):
 
     class Meta:
         model = User
-        exclude = ['password']
+        exclude = ["password"]
