@@ -1,6 +1,6 @@
-# E-Commerce
+# Perfect Fit
 
-E-Commerce is a proof-of-concept, full-stack e-commerce single page web application.
+Perfect Fit is a proof-of-concept, full-stack e-commerce single page web application.
 
 ## Features
 
